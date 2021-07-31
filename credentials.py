@@ -21,4 +21,6 @@ class Credentials:
         # self.password=password
     def display_Credentials(self):
         pass
+    def delete_Account(self):
+        pass
 
