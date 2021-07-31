@@ -1,3 +1,4 @@
+from credentials import Credentials
 from user import User
 
 
@@ -12,6 +13,18 @@ def login(email):
     new_user=User.find_User(email)
     return new_user
 
+
+# Credential functions
+def create_Credentials(name,password):
+    new_credentials=Credentials(name=name,password=password)
+    return new_credentials
+
+
+def save_Cred(cred):
+    cred.save_Credentials()
+
+def gen_Pass():
+   return  Credentials.genPass()
 def main():
     print("hello Welcome to password locker.What is your name")
     user_name=input()
@@ -74,6 +87,53 @@ def main():
 
 
         print(f"Welcome {logedUser.first_Name} its been tough but argh you done")
+
+
+        print("What do you want to do?")
+        print("\n")
+        print("For Create credentials-----------------CC")
+        print("\n")
+        print("For Display your saved credentials-----DC")
+        print("\n")
+        print("For Searching  credentials--------------SC")
+        print("\n")
+        print("To Delete credentials-------------------DL")
+        print("\n")
+        print("To Update  credentials-------------------UC")
+   
+        short_code=input().upper()
+        if short_code=="CC":
+            print("New Credentials")
+            print("*"*50)
+            print("\n")
+
+
+            print("Name of site")
+            name=input()
+            print("\n")
+
+
+            print("Select either to enter password or create password")
+            print("For eneter password-------------EP")
+            
+            print("For Generate password ------------GP")
+            com=input().upper()
+            print("\n")
+            if com=='EP':
+                passw=input()
+                print(passw)
+            elif com=='GP':
+                passw=gen_Pass()
+                print(passw)
+            else:
+                print("Dont understand you?")
+                
+
+
+
+            
+
+        
 
 
 

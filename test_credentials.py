@@ -17,7 +17,7 @@ class TestCredentials(unittest.TestCase):
         self.assertEqual(len(Credentials.cred_list),1)
         
     def test_genPass(self):
-        passw=Credentials.genPass(self)
+        passw=Credentials.genPass()
         test_credential=Credentials("Test","{passw}")
 
         self.assertNotEqual(len(test_credential.password),0)
@@ -27,7 +27,7 @@ class TestCredentials(unittest.TestCase):
         Credentials.cred_list=[]
      
     def test_display_Cred(self):
-        passw=Credentials.genPass(self)
+        passw=Credentials.genPass()
         test_credential=Credentials("Test","{passw}")
 
         self.assertEqual(Credentials.display_Credentials(),Credentials.cred_list)
@@ -35,7 +35,7 @@ class TestCredentials(unittest.TestCase):
 
     def test_delete_Cred(self):
         self.new_credential.save_Credentials()
-        passw=Credentials.genPass(self)
+        passw=Credentials.genPass()
         test_credential=Credentials("Test","{passw}")
         test_credential.save_Credentials()
 
@@ -45,7 +45,7 @@ class TestCredentials(unittest.TestCase):
 
     def test_cred_Exists(self):
         self.new_credential.save_Credentials()
-        passw=Credentials.genPass(self)
+        passw=Credentials.genPass()
         test_credential=Credentials("Test","{passw}")
         test_credential.save_Credentials()
         cred_exixts=Credentials.check_cred_Exists("Test")
@@ -54,7 +54,7 @@ class TestCredentials(unittest.TestCase):
     def test_find_cred(self):
 
         self.new_credential.save_Credentials()
-        passw=Credentials.genPass(self)
+        passw=Credentials.genPass()
         test_credential=Credentials("Test","{passw}")
         test_credential.save_Credentials()
         cred_found=Credentials.find_cred("Test")
