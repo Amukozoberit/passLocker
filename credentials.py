@@ -33,8 +33,11 @@ class Credentials:
                 return True
         return False
         
-
-    def find_cred():
-        pass
+    @classmethod
+    def find_cred(cls,name):
+        for cred in cls.cred_list:
+           if cred.name==name:
+               return cred
+            
         
 
