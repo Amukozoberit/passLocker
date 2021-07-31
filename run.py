@@ -28,6 +28,11 @@ def gen_Pass():
 
 def display_Cred():
     return Credentials.display_Credentials()
+
+
+def find_Cred(name):
+    return Credentials.find_cred(name)
+
 def main():
     print("hello Welcome to password locker.What is your name")
     user_name=input()
@@ -143,7 +148,13 @@ def main():
                 else:
                     print("Credentials are currently empty create one first ")
             elif short_code=="sc":
+                search_val=input().lower()
                 
+                if search_val=='':
+                    print("its empty")
+                else:
+                    search_cred=find_Cred(search_val)
+                     
    
 
         elif short_code=='EX':
