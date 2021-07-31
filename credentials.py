@@ -1,5 +1,6 @@
 from random import choice
 import string
+from user import User
 
 
 class Credentials:
@@ -22,10 +23,18 @@ class Credentials:
     @classmethod
     def display_Credentials(cls):
         return cls.cred_list
+        
     def delete_Account(self):
         Credentials.cred_list.remove(self)
+    @classmethod
+    def check_cred_Exists(cls,name):
+        for userCred in cls.cred_list:
+            if userCred.name==name:
+                return True
+        return False
+        
 
-    def check_cred_Exists():
+    def find_cred():
         pass
         
 

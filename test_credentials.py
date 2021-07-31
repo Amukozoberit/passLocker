@@ -41,6 +41,16 @@ class TestCredentials(unittest.TestCase):
 
         self.new_credential.delete_Account()
         self.assertEqual(len(Credentials.cred_list),1)
+
+
+    def test_cred_Exists(self):
+        self.new_credential.save_Credentials()
+        passw=Credentials.genPass(self)
+        test_credential=Credentials("Test","{passw}")
+        test_credential.save_Credentials()
+        cred_exixts=Credentials.check_cred_Exists("Test")
+        self.assertTrue(cred_exixts)
+
 if __name__ == '__main__':
     unittest.main()
     
