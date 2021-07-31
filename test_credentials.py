@@ -23,12 +23,24 @@ class TestCredentials(unittest.TestCase):
         self.assertNotEqual(len(test_credential.password),0)
     
 
-
+    def tearDown(self):
+        Credentials.cred_list=[]
+     
     def test_display_Cred(self):
         passw=Credentials.genPass(self)
         test_credential=Credentials("Test","{passw}")
 
         self.assertEqual(Credentials.display_Credentials(),Credentials.cred_list)
+
+
+    def test_delete_Cred(self):
+        self.new_credential.save_Credentials()
+        passw=Credentials.genPass(self)
+        test_credential=Credentials("Test","{passw}")
+        test_credential.save_Credentials()
+
+        self.new_credential.delete_Account()
+        self.assertEqual(len(Credentials.cred_list),1)
 if __name__ == '__main__':
     unittest.main()
     

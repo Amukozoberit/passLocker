@@ -23,5 +23,9 @@ class Credentials:
     def display_Credentials(cls):
         return cls.cred_list
     def delete_Account(self):
+        Credentials.cred_list.remove(self)
+
+    def check_cred_Exists():
         pass
+        
 
