@@ -1,9 +1,7 @@
-from random import choice
-import string
-from run import main
+
 from credentials import Credentials
 import unittest
-import credentials 
+
 
 class TestCredentials(unittest.TestCase):
     def setUp(self):
@@ -12,9 +10,17 @@ class TestCredentials(unittest.TestCase):
         self.assertEqual(self.new_credential.name,"bMwashe")
         self.assertEqual(self.new_credential.password,"12345")
 
+
+
+    def test_save_Credentials(self):
+        self.new_credential.save_Credentials()
+        self.assertEqual(len(Credentials.cred_list),1)
+        
     def test_genPass(self):
-        self.new_credential=Credentials("Test",Credentials.genPass())
-        self.assertTrue(Credentials.genPass())
+        passw=Credentials.genPass(self)
+        test_credential=Credentials("Test","{passw}")
+
+        self.assertNotEqual(len(test_credential.password),0)
     
 if __name__ == '__main__':
     unittest.main()
