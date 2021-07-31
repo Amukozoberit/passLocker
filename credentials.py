@@ -19,8 +19,9 @@ class Credentials:
         characters=string.ascii_letters+ string.punctuation+ string.digits
         password="".join(choice(characters) for x in range(8,16))
         # self.password=password
-    def display_Credentials(self):
-        pass
+    @classmethod
+    def display_Credentials(cls):
+        return cls.cred_list
     def delete_Account(self):
         pass
 

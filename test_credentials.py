@@ -22,6 +22,13 @@ class TestCredentials(unittest.TestCase):
 
         self.assertNotEqual(len(test_credential.password),0)
     
+
+
+    def test_display_Cred(self):
+        passw=Credentials.genPass(self)
+        test_credential=Credentials("Test","{passw}")
+
+        self.assertEqual(Credentials.display_Credentials(),Credentials.cred_list)
 if __name__ == '__main__':
     unittest.main()
     
