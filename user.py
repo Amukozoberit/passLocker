@@ -2,6 +2,7 @@ import email
 
 
 class User:
+    user=[]
     '''user Class helps define properties for our class everytime
     we run our class an instant is created with this properties'''
     def __init__(self,first_Name,last_Name,e_mail,user_Name):
@@ -12,5 +13,7 @@ class User:
         
 
 
-    def save_contact(self):
-        self.e_mail
+    def save_User(self):
+        User.user.append(self)
+
+    
