@@ -14,6 +14,7 @@ def login(email):
     return new_user
 
 
+
 # Credential functions
 def create_Credentials(name,password):
     new_credentials=Credentials(name=name,password=password)
@@ -32,6 +33,10 @@ def display_Cred():
 
 def find_Cred(name):
     return Credentials.find_cred(name)
+
+
+def check_existing(val):
+    return Credentials.check_cred_Exists(val)
 
 def main():
     print("hello Welcome to password locker.What is your name")
@@ -147,14 +152,18 @@ def main():
                         print(f"{cred.name} {cred.password}")
                 else:
                     print("Credentials are currently empty create one first ")
-            elif short_code=="sc":
+            elif short_code=="SC":
                 search_val=input().lower()
                 
                 if search_val=='':
                     print("its empty")
+                
                 else:
-                    search_cred=find_Cred(search_val)
-                     
+                    if check_existing(search_val):
+
+                        search_cred=find_Cred(search_val)
+                        print(f"{search_cred.name} found with {search_cred.password} as password")
+
    
 
         elif short_code=='EX':
