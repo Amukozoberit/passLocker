@@ -18,6 +18,10 @@ class User:
         User.user_list.append(self)
 
 
+    @classmethod
+    def display_Users(cls):
+        return cls.user_list
+
 
     @classmethod
     def find_User(cls,pass_word):

@@ -1,4 +1,5 @@
 from cgi import test
+from credentials import Credentials
 import unittest
 
 from user import User
@@ -41,6 +42,13 @@ class TestUser(unittest.TestCase):
         self.assertEqual(found_user.pass_word,test_user.pass_word)
         self.assertEqual(found_user.first_Name,test_user.first_Name)
         self.assertEqual(found_user.last_Name,test_user.last_Name)
+    def test_display_users(self):
+        '''test if display user is working correctly'''
+        # self.new_user.save_User()
+        test_user=User("Test","user","test@user.com",'TestB',"0711223344") # new contact
+        test_user.save_User()
+        self.assertEqual(User.display_Users(),User.user_list)
+        
 
         
 
