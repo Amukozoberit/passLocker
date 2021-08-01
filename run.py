@@ -108,10 +108,10 @@ def main():
             print("*"*200)
             save_Users(createAccount(fname,lname,uname,email,pNumber))
         
-            print("Now you have to login {fname}")
+            print(f"Now you have to login {fname}")
 
         elif short_code=='LI':
-            print("email.......")
+            print("Password .......")
             email=input()
             # print("pass_word number.......")
             # pNumber=input()
@@ -143,7 +143,7 @@ def main():
 
 
                 print("Name of site")
-                name=input()
+                name=input().capitalize()
                 print("\n")
 
                 print("Username")
@@ -176,20 +176,21 @@ def main():
                 else:
                     print("Credentials are currently empty create one first ")
             elif short_code=="SC":
-                search_val=input().lower()
+                search_val=input().capitalize()
                 
-                if search_val=='':
-                    print("its empty")
+                # if search_val=='':
+                #     print("its empty")
            
                 
                 
+                # else:
+                if check_existing(search_val):
+                    search_cred=find_Cred(search_val)
+                    print(f" You have {search_cred.name} account with username:{search_cred.Uname}  and password {search_cred.password}")
+                    print("-----------------------------------------------------------------------------------")
                 else:
-                    if check_existing(search_val):
-
-                        search_cred=find_Cred(search_val)
-                        print(f" You have {search_cred.name} account with username:{search_cred.Uname}  and password {search_cred.password}")
-                        print("-----------------------------------------------------------------------------------")
-
+                    print(f"Sorry we dont have a record {search_val} in our database ")
+                        
             elif short_code=='DL':
                 del_val=input()
                 if check_existing(del_val):
@@ -197,10 +198,13 @@ def main():
                     search_cred=find_Cred(del_val)
                     del_Cred(search_cred)
                     print(f"You have sucessfully deleted {del_val}")
+            elif short_code=='EX':
+                print(f"Goodbye {fname}")
                 
 
         elif short_code=='EX':
             print(f"goobye {user_name}")
+            break
 
         else:
             print(f"Did you really read the instructions {user_name} please retry")
