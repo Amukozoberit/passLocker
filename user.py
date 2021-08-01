@@ -1,4 +1,4 @@
-import email
+
 
 
 class User:
@@ -14,13 +14,15 @@ class User:
    
   
     def save_User(self):
+        '''function to save a user'''
         User.user_list.append(self)
 
 
 
     @classmethod
     def find_User(cls,pass_word):
-        '''check if contact exists with email'''
+        '''cls means its a class method it can be accesd in a class
+        check if contact exists with email'''
         for user in cls.user_list:
             if user.pass_word==pass_word:
                 return user
