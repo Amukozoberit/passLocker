@@ -19,9 +19,9 @@ def login(pass_word):
 
 
 # Credential functions
-def create_Credentials(name,password):
+def create_Credentials(name,Uname,password):
     '''Fucntion that creates credentials of the user '''
-    new_credentials=Credentials(name=name,password=password)
+    new_credentials=Credentials(name=name,Uname=Uname,password=password)
     return new_credentials
 
 
@@ -131,6 +131,8 @@ def main():
             print("\n")
             print("To Delete credentials------------------------------DL")
             print("\n")
+            print("To Exit---------------------------------------------EX")
+            print("\n")
             # print("To Update  credentials-----------------------------UC")
     
             short_code=input().upper()
@@ -142,6 +144,10 @@ def main():
 
                 print("Name of site")
                 name=input()
+                print("\n")
+
+                print("Username")
+                Uname=input()
                 print("\n")
 
 
@@ -160,12 +166,13 @@ def main():
                     print(passw)
                 else:
                     print("Dont understand you?")
-                save_Cred(create_Credentials(name,passw))
-                print(f"New credentials of: {name} with password:{passw} created")
+                save_Cred(create_Credentials(name,Uname,passw))
+                print(f"New credentials of: {Uname} with password:{passw} created for {name}")
             elif short_code=='DC':
                 if display_Cred():
                     for cred in display_Cred():
-                        print(f"{cred.name} {cred.password}")
+                        print(f" You have {cred.name} account with username:{cred.Uname}  and password {cred.password}")
+                        print("-----------------------------------------------------------------------------------")
                 else:
                     print("Credentials are currently empty create one first ")
             elif short_code=="SC":
@@ -180,7 +187,8 @@ def main():
                     if check_existing(search_val):
 
                         search_cred=find_Cred(search_val)
-                        print(f"{search_cred.name} found with {search_cred.password} as password")
+                        print(f" You have {search_cred.name} account with username:{search_cred.Uname}  and password {search_cred.password}")
+                        print("-----------------------------------------------------------------------------------")
 
             elif short_code=='DL':
                 del_val=input()

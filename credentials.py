@@ -10,10 +10,12 @@ class Credentials:
     '''
     cred_list=[]
     password:text;
-    def __init__(self,name,password):
+    def __init__(self,name,Uname,password):
         '''name and password instance are initialized every time we call credentials'''
         self.name=name
+        self.Uname=Uname
         self.password=password
+
     
     def save_Credentials(self):
         '''we save the creditaals by pushing code to cred_list'''

@@ -8,10 +8,11 @@ class TestCredentials(unittest.TestCase):
     def setUp(self):
         '''setup function that runs everytime a test is run
     '''
-        self.new_credential=Credentials("bMwashe","12345")
+        self.new_credential=Credentials("Instagram","bMwashe","12345")
     def test_init(self):
         '''test run to check if the app is initialized properly'''
-        self.assertEqual(self.new_credential.name,"bMwashe")
+        self.assertEqual(self.new_credential.name,"Instagram")
+        self.assertEqual(self.new_credential.Uname,"bMwashe")
         self.assertEqual(self.new_credential.password,"12345")
 
 
@@ -25,7 +26,7 @@ class TestCredentials(unittest.TestCase):
         '''test to check if generate pasword function is generating a password'''
 
         passw=Credentials.genPass()
-        test_credential=Credentials("Test","{passw}")
+        test_credential=Credentials("Test","UTest","{passw}")
 
         self.assertNotEqual(len(test_credential.password),0)
     
@@ -38,7 +39,7 @@ class TestCredentials(unittest.TestCase):
     def test_display_Cred(self):
         '''test if display credentials work'''
         passw=Credentials.genPass()
-        test_credential=Credentials("Test","{passw}")
+        test_credential=Credentials("Test","UTest","{passw}")
 
         self.assertEqual(Credentials.display_Credentials(),Credentials.cred_list)
 
@@ -47,7 +48,7 @@ class TestCredentials(unittest.TestCase):
         '''test if delete_credentials works'''
         self.new_credential.save_Credentials()
         passw=Credentials.genPass()
-        test_credential=Credentials("Test","{passw}")
+        test_credential=Credentials("Test","UTest","{passw}")
         test_credential.save_Credentials()
 
         test_credential.delete_Account()
@@ -60,7 +61,7 @@ class TestCredentials(unittest.TestCase):
         then:create a testing credential to test if found'''
         self.new_credential.save_Credentials()
         passw=Credentials.genPass()
-        test_credential=Credentials("Test","{passw}")
+        test_credential=Credentials("Test","UTest","{passw}")
         test_credential.save_Credentials()
         cred_exixts=Credentials.check_cred_Exists("Test")
         self.assertTrue(cred_exixts)
@@ -69,7 +70,7 @@ class TestCredentials(unittest.TestCase):
         '''Search for credentials using the password to enable a user login'''
         self.new_credential.save_Credentials()
         passw=Credentials.genPass()
-        test_credential=Credentials("Test","{passw}")
+        test_credential=Credentials("Test","uTest","{passw}")
         test_credential.save_Credentials()
         cred_found=Credentials.find_cred("Test")
         self.assertEqual(cred_found.name,test_credential.name)
