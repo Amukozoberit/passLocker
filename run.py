@@ -188,7 +188,8 @@ def main():
                             passww=gen_Pass()
                             print(passw)
                         else:
-                            print("Dont understand you?")
+                            print("I dont understand you choose eith EP or GP")
+                            break
                         save_Cred(create_Credentials(name,Uname,passw))
                         print(f"New credentials of: {Uname} with password:{passw} created for {name}")
                     elif short_code=='DC':
@@ -229,11 +230,17 @@ def main():
                     elif short_code=='COPY':
                         print("Name of credential to copy")
                         name=input().capitalize()
-                        cred=copy_credentials(name)
-                        print("-------------------------------------------------")
-                        print("Copied sucessfully Try pasting  it somewhere")
-                        print('\n')
-                        print("-------------------------------------------------")
+                       
+                        if check_existing(name):
+
+                            cred=copy_credentials(name)
+                            print("-------------------------------------------------")
+                            print("Copied sucessfully Try pasting  it somewhere")
+                            print('\n')
+                            print("-------------------------------------------------")
+                        else:
+                            print(f"Sorry {name}not found")
+
                     elif short_code=='EX':
                         print(f"Goodbye {fname} You are out of the Credentials store to get in again you have to login")
                         print("YOUR ACCOUNT DETAILS ARE SAFE US")
@@ -244,6 +251,7 @@ def main():
                         
                 else:
                     print("Create account to login")
+                    break
         
         elif short_code=='EX':
                 print(f"goobye {user_name}")

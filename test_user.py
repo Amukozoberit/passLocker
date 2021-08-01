@@ -1,8 +1,10 @@
 from cgi import test
-from credentials import Credentials
+
 import unittest
 
 from user import User
+
+# from .classes.user import User
 
 
 class TestUser(unittest.TestCase):
@@ -10,7 +12,7 @@ class TestUser(unittest.TestCase):
         '''setup method called before any test is run
         We create a new user asign value and test if its working fine'''
         self.new_user=User("Mwashe","Berit","mwasheberit@gmail.com","mwasheB","0794163715")
-
+        # self.new_user=User
     def test_init(self):
         ''''method runs whenever we instanciate our class
         so every time we instanciate our class we create a user'''
