@@ -112,105 +112,109 @@ def main():
 
         elif short_code=='LI':
             print("Password .......")
-            email=input()
+            password=input()
             # print("pass_word number.......")
             # pNumber=input()
-            logedUser=login(email)
+            
+            logedUser=login(password)
+            if logedUser:
 
 
-            print(f"Welcome {logedUser.first_Name} its been tough but argh you done")
-
-
-            print("What do you want to do?")
-            print("\n")
-            print("For Create credentials---------------------------CC")
-            print("\n")
-            print("For Display your saved credentials----------------DC")
-            print("\n")
-            print("For Searching  credentials------------------------SC")
-            print("\n")
-            print("To Delete credentials------------------------------DL")
-            print("\n")
-            print("To Exit---------------------------------------------EX")
-            print("\n")
-            # print("To Update  credentials-----------------------------UC")
-    
-            short_code=input().upper()
-            if short_code=="CC":
-                print("New Credentials")
-                print("*"*50)
-                print("\n")
-
-
-                print("Name of site")
-                name=input().capitalize()
-                print("\n")
-
-                print("Username")
-                Uname=input()
-                print("\n")
-
-
-                print("Select either to enter password or create password")
-                print("For enter password-------------------------------EP")
+                print(f"Welcome {logedUser.first_Name} its been tough but argh you done")
                 
-                print("For Generate password ---------------------------GP")
-                com=input().upper()
+
+
+                print("What do you want to do?")
                 print("\n")
-                if com=='EP':
-                    passw=input()
-                    print(passw)
-                elif com=='GP':
-                    passw=gen_Pass()
-                    passww=gen_Pass()
-                    print(passw)
-                else:
-                    print("Dont understand you?")
-                save_Cred(create_Credentials(name,Uname,passw))
-                print(f"New credentials of: {Uname} with password:{passw} created for {name}")
-            elif short_code=='DC':
-                if display_Cred():
-                    for cred in display_Cred():
-                        print(f" You have {cred.name} account with username:{cred.Uname}  and password {cred.password}")
+                print("For Create credentials---------------------------CC")
+                print("\n")
+                print("For Display your saved credentials----------------DC")
+                print("\n")
+                print("For Searching  credentials------------------------SC")
+                print("\n")
+                print("To Delete credentials------------------------------DL")
+                print("\n")
+                print("To Exit---------------------------------------------EX")
+                print("\n")
+                # print("To Update  credentials-----------------------------UC")
+        
+                short_code=input().upper()
+                if short_code=="CC":
+                    print("New Credentials")
+                    print("*"*50)
+                    print("\n")
+
+
+                    print("Name of site")
+                    name=input().capitalize()
+                    print("\n")
+
+                    print("Username")
+                    Uname=input()
+                    print("\n")
+
+
+                    print("Select either to enter password or create password")
+                    print("For enter password-------------------------------EP")
+                    
+                    print("For Generate password ---------------------------GP")
+                    com=input().upper()
+                    print("\n")
+                    if com=='EP':
+                        passw=input()
+                        print(passw)
+                    elif com=='GP':
+                        passw=gen_Pass()
+                        passww=gen_Pass()
+                        print(passw)
+                    else:
+                        print("Dont understand you?")
+                    save_Cred(create_Credentials(name,Uname,passw))
+                    print(f"New credentials of: {Uname} with password:{passw} created for {name}")
+                elif short_code=='DC':
+                    if display_Cred():
+                        for cred in display_Cred():
+                            print(f" You have {cred.name} account with username:{cred.Uname}  and password {cred.password}")
+                            print("-----------------------------------------------------------------------------------")
+                    else:
+                        print("Credentials are currently empty create one first ")
+                elif short_code=="SC":
+                    search_val=input().capitalize()
+                    
+                    # if search_val=='':
+                    #     print("its empty")
+            
+                    
+                    
+                    # else:
+                    if check_existing(search_val):
+                        search_cred=find_Cred(search_val)
+                        print(f" You have {search_cred.name} account with username:{search_cred.Uname}  and password {search_cred.password}")
                         print("-----------------------------------------------------------------------------------")
-                else:
-                    print("Credentials are currently empty create one first ")
-            elif short_code=="SC":
-                search_val=input().capitalize()
-                
-                # if search_val=='':
-                #     print("its empty")
-           
-                
-                
-                # else:
-                if check_existing(search_val):
-                    search_cred=find_Cred(search_val)
-                    print(f" You have {search_cred.name} account with username:{search_cred.Uname}  and password {search_cred.password}")
-                    print("-----------------------------------------------------------------------------------")
-                else:
-                    print(f"Sorry we dont have a record {search_val} in our database ")
-                        
-            elif short_code=='DL':
-                del_val=input()
-                if check_existing(del_val):
+                    else:
+                        print(f"Sorry we dont have a record {search_val} in our database ")
+                            
+                elif short_code=='DL':
+                    del_val=input()
+                    if check_existing(del_val):
 
-                    search_cred=find_Cred(del_val)
-                    del_Cred(search_cred)
-                    print(f"You have sucessfully deleted {del_val}")
-            elif short_code=='EX':
-                print(f"Goodbye {fname}")
-                
-
+                        search_cred=find_Cred(del_val)
+                        del_Cred(search_cred)
+                        print(f"You have sucessfully deleted {del_val}")
+                elif short_code=='EX':
+                    print(f"Goodbye {fname}")
+                    
+            else:
+                print("Create account to login")
         elif short_code=='EX':
-            print(f"goobye {user_name}")
-            break
+                print(f"goobye {user_name}")
+                break
 
         else:
-            print(f"Did you really read the instructions {user_name} please retry")
+                print(f"Did you really read the instructions {user_name} please retry")
 
 
-        
+            
 
 
 

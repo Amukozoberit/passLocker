@@ -1,6 +1,8 @@
 from cgitb import text
 from random import choice
 import string
+
+import pyperclip
 from user import User
 
 
@@ -56,7 +58,12 @@ class Credentials:
            if cred.name==name:
                return cred
 
-   
+    @classmethod
+    def copy_Cred(cls, name):
+        '''copies cred to clipbord and alow user to paste'''
+
+        cred_found=Credentials.find_cred(name)
+        pyperclip.copy(cred_found.Uname)
             
         
 
