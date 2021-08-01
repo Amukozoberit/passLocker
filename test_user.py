@@ -13,7 +13,7 @@ class TestUser(unittest.TestCase):
         self.assertEqual(self.new_user.last_Name,"Berit")
         self.assertEqual(self.new_user.e_mail,"mwasheberit@gmail.com")
         self.assertEqual(self.new_user.user_Name,"mwasheB")
-        self.assertEqual(self.new_user.phone_Number,"0794163715")
+        self.assertEqual(self.new_user.pass_word,"0794163715")
 
     def tearDown(self):
         User.user_list=[]
@@ -41,9 +41,9 @@ class TestUser(unittest.TestCase):
         self.new_user.save_User()
         test_user=User("Test","user","test@user.com",'TestB',"0711223344") # new contact
         test_user.save_User()
-        found_user=User.find_User("test@user.com")
+        found_user=User.find_User("0711223344")
         self.assertEqual(found_user.e_mail,test_user.e_mail)
-        self.assertEqual(found_user.phone_Number,test_user.phone_Number)
+        self.assertEqual(found_user.pass_word,test_user.pass_word)
         self.assertEqual(found_user.first_Name,test_user.first_Name)
         self.assertEqual(found_user.last_Name,test_user.last_Name)
 

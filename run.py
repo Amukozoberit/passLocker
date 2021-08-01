@@ -2,15 +2,15 @@ from credentials import Credentials
 from user import User
 
 
-def createAccount(fname,lname,mail,uName,phone):
-    new_user=User(first_Name=fname,last_Name=lname,user_Name=uName,e_mail=mail,phone_Number=phone)
+def createAccount(fname,lname,mail,uName,pass_word):
+    new_user=User(first_Name=fname,last_Name=lname,user_Name=uName,e_mail=mail,pass_word=pass_word)
     return new_user
 
 def save_Users(user):
     user.save_User()
 
-def login(email):
-    new_user=User.find_User(email)
+def login(pass_word):
+    new_user=User.find_User(pass_word)
     return new_user
 
 
@@ -37,6 +37,9 @@ def find_Cred(name):
 
 def check_existing(val):
     return Credentials.check_cred_Exists(val)
+
+def del_Cred(del_cred):
+    del_cred.delete_Account()
 
 def main():
     print("hello Welcome to password locker.What is your name")
@@ -84,7 +87,7 @@ def main():
         
 
 
-            print("Phone Number..................................")
+            print("pass_word to Login..................................")
             pNumber=input()
             print("*"*20)
             print('\n')
@@ -93,12 +96,12 @@ def main():
             print("*"*200)
             save_Users(createAccount(fname,lname,uname,email,pNumber))
         
-            print("Now you have to login ")
+            print("Now you have to login {fname}")
 
         elif short_code=='LI':
             print("email.......")
             email=input()
-            # print("phone number.......")
+            # print("pass_word number.......")
             # pNumber=input()
             logedUser=login(email)
 
@@ -116,7 +119,7 @@ def main():
             print("\n")
             print("To Delete credentials------------------------------DL")
             print("\n")
-            print("To Update  credentials-----------------------------UC")
+            # print("To Update  credentials-----------------------------UC")
     
             short_code=input().upper()
             if short_code=="CC":
@@ -141,6 +144,7 @@ def main():
                     print(passw)
                 elif com=='GP':
                     passw=gen_Pass()
+                    passww=gen_Pass()
                     print(passw)
                 else:
                     print("Dont understand you?")
@@ -157,6 +161,8 @@ def main():
                 
                 if search_val=='':
                     print("its empty")
+           
+                
                 
                 else:
                     if check_existing(search_val):
@@ -164,7 +170,14 @@ def main():
                         search_cred=find_Cred(search_val)
                         print(f"{search_cred.name} found with {search_cred.password} as password")
 
-   
+            elif short_code=='DL':
+                del_val=input()
+                if check_existing(del_val):
+
+                    search_cred=find_Cred(del_val)
+                    del_Cred(search_cred)
+                    print(f"You have sucessfully deleted {del_val}")
+                
 
         elif short_code=='EX':
             print(f"goobye {user_name}")

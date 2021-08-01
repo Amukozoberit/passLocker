@@ -5,12 +5,12 @@ class User:
     user_list=[]
     '''user Class helps define properties for our class everytime
     we run our class an instant is created with this properties'''
-    def __init__(self,first_Name,last_Name,e_mail,user_Name,phone_Number):
+    def __init__(self,first_Name,last_Name,e_mail,user_Name,pass_word):
         self.first_Name=first_Name
         self.last_Name=last_Name
         self.e_mail=e_mail
         self.user_Name=user_Name
-        self.phone_Number=phone_Number
+        self.pass_word=pass_word
    
   
     def save_User(self):
@@ -19,10 +19,10 @@ class User:
 
 
     @classmethod
-    def find_User(cls,email):
+    def find_User(cls,pass_word):
         '''check if contact exists with email'''
         for user in cls.user_list:
-            if user.e_mail==email:
+            if user.pass_word==pass_word:
                 return user
 
   
