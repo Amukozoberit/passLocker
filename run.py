@@ -51,6 +51,9 @@ def del_Cred(del_cred):
     ''''function to delete the credentials'''
     del_cred.delete_Account()
 
+def copy_credentials(name):
+    return Credentials.copy_Cred(name)
+
 def main():
     print("hello Welcome to password locker.What is your name")
     user_name=input()
@@ -134,22 +137,24 @@ def main():
                 print("\n")
                 print("To Delete credentials------------------------------DL")
                 print("\n")
+                print("To Copy credentials------------------------------COPY")
+                print("\n")
                 print("To Exit---------------------------------------------EX")
                 print("\n")
                 # print("To Update  credentials-----------------------------UC")
         
                 short_code=input().upper()
                 if short_code=="CC":
-                    print("New Credentials")
+                    print("New Credentials ***************")
                     print("*"*50)
                     print("\n")
 
 
-                    print("Name of site")
+                    print("Name of site ***************")
                     name=input().capitalize()
                     print("\n")
 
-                    print("Username")
+                    print("Username ******************")
                     Uname=input()
                     print("\n")
 
@@ -161,9 +166,11 @@ def main():
                     com=input().upper()
                     print("\n")
                     if com=='EP':
+                        print("input password")
                         passw=input()
                         print(passw)
                     elif com=='GP':
+                        print("input password")
                         passw=gen_Pass()
                         passww=gen_Pass()
                         print(passw)
@@ -175,9 +182,10 @@ def main():
                     if display_Cred():
                         for cred in display_Cred():
                             print(f" You have {cred.name} account with username:{cred.Uname}  and password {cred.password}")
-                            print("-----------------------------------------------------------------------------------")
+                        print("-----------------------------------------------------------------------------------")
                     else:
                         print("Credentials are currently empty create one first ")
+                        print("-------------------------------------------------")
                 elif short_code=="SC":
                     search_val=input().capitalize()
                     
@@ -193,6 +201,7 @@ def main():
                         print("-----------------------------------------------------------------------------------")
                     else:
                         print(f"Sorry we dont have a record {search_val} in our database ")
+                        print("-----------------------------------------------------------------------------------")
                             
                 elif short_code=='DL':
                     del_val=input()
@@ -200,12 +209,25 @@ def main():
 
                         search_cred=find_Cred(del_val)
                         del_Cred(search_cred)
+                        print("-------------------------------------------------")
                         print(f"You have sucessfully deleted {del_val}")
+                        print("-------------------------------------------------")
+                elif short_code=='COPY':
+                    print("Name of credential to copy")
+                    name=input().capitalize()
+                    cred=copy_credentials(name)
+                    print("-------------------------------------------------")
+                    print("Copied sucessfully Try pasting  it somewhere")
+                    print('\n')
+                    print("-------------------------------------------------")
                 elif short_code=='EX':
                     print(f"Goodbye {fname}")
+                else:
+                    print('I did not understand you try again')
                     
             else:
                 print("Create account to login")
+        
         elif short_code=='EX':
                 print(f"goobye {user_name}")
                 break

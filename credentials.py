@@ -63,7 +63,8 @@ class Credentials:
         '''copies cred to clipbord and alow user to paste'''
 
         cred_found=Credentials.find_cred(name)
-        pyperclip.copy(cred_found.Uname)
+        pyperclip.copy(cred_found.Uname + " "+ cred_found.password)
+        # pyperclip.copy(cred_found.password)
             
         
 
