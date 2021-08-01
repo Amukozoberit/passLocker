@@ -31,10 +31,12 @@ class TestCredentials(unittest.TestCase):
     
 
     def tearDown(self):
-        ''''''
+        '''executes after each test by removing the content in cred_list
+        making it empty'''
         Credentials.cred_list=[]
      
     def test_display_Cred(self):
+        '''test if display credentials work'''
         passw=Credentials.genPass()
         test_credential=Credentials("Test","{passw}")
 
@@ -42,6 +44,7 @@ class TestCredentials(unittest.TestCase):
 
 
     def test_delete_Cred(self):
+        '''test if delete_credentials works'''
         self.new_credential.save_Credentials()
         passw=Credentials.genPass()
         test_credential=Credentials("Test","{passw}")
@@ -52,6 +55,9 @@ class TestCredentials(unittest.TestCase):
 
 
     def test_cred_Exists(self):
+        '''check if the credentials exists  we 
+        first:save credential thats default
+        then:create a testing credential to test if found'''
         self.new_credential.save_Credentials()
         passw=Credentials.genPass()
         test_credential=Credentials("Test","{passw}")
@@ -60,7 +66,7 @@ class TestCredentials(unittest.TestCase):
         self.assertTrue(cred_exixts)
 
     def test_find_cred(self):
-
+        '''Search for credentials using the password to enable a user login'''
         self.new_credential.save_Credentials()
         passw=Credentials.genPass()
         test_credential=Credentials("Test","{passw}")
